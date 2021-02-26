@@ -1,4 +1,3 @@
-# DiscordSRV-ApiTest
-Example usage of DiscordSRV's API
+# DiscordSRV-LinkChannel
 
-## [See DiscordSRV's wiki for dependency information](https://github.com/DiscordSRV/DiscordSRV/wiki#developers)
+Allow linking via a Discord channel as opposed to solely via a Bot's DMs
