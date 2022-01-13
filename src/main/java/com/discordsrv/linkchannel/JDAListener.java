@@ -25,7 +25,7 @@ public class JDAListener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         //If the message was sent in the discord linking channel
-        if (event.getChannel().getId().toString().equals(DiscordSRV.config().getString("LinkingDiscordChannel"))) {
+        if (event.getChannel().getId().equals(DiscordSRV.config().getString("LinkingDiscordChannel"))) {
             //don't process messages sent by ANY bot
             if (!event.getAuthor().isBot()) {
                 DiscordSRV.api.callEvent(new DiscordGuildMessageReceivedEvent(event));
