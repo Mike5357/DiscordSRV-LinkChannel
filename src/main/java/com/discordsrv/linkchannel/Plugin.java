@@ -1,14 +1,8 @@
 package com.discordsrv.linkchannel;
 
 import github.scarsz.discordsrv.DiscordSRV;
-import github.scarsz.discordsrv.api.events.DiscordGuildMessageReceivedEvent;
-import github.scarsz.discordsrv.dependencies.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.concurrent.TimeUnit;
 
 public class Plugin extends JavaPlugin implements Listener {
 
@@ -17,7 +11,7 @@ public class Plugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         DiscordSRV.api.subscribe(discordsrvListener);
-        getLogger().info("DiscordSRV-LinkChannel extension has been enabled! Nice job Mike :)");
+        getLogger().info("DiscordSRV-LinkChannel extension has been enabled!");
         getServer().getPluginManager().registerEvents(this, this);
     }
 
