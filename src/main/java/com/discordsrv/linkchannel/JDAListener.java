@@ -19,7 +19,7 @@ public class JDAListener extends ListenerAdapter {
 
     @Override // we can use any of JDA's events through ListenerAdapter, just by overriding the methods
     public void onGuildUnavailable(@NotNull GuildUnavailableEvent event) {
-        plugin.getLogger().severe("Oh no " + event.getGuild().getName() + " went unavailable :(");
+        plugin.getLogger().severe("Oh no " + event.getGuild().getName() + " Discord server went unavailable :(");
     }
 
     @Override

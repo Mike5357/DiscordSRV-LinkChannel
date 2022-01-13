@@ -47,16 +47,16 @@ public class DiscordSRVListener {
     @Subscribe
     public void accountLinked(AccountLinkedEvent event) {
         // Example of broadcasting a message when a new account link has been made
-        //User user = DiscordUtil.getJda().getUserById(event.getUser().getId());
-        //user.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage("Your account has been linked!").queue());
-        Bukkit.broadcastMessage(ChatColor.GRAY + "[" + net.md_5.bungee.api.ChatColor.of("#78E174") + "\u2714" + ChatColor.GRAY + "] " + net.md_5.bungee.api.ChatColor.of("#FF9B58") + event.getPlayer().getName() + ChatColor.GRAY + " has linked their" + net.md_5.bungee.api.ChatColor.of("#7289DA") + " Discord" + ChatColor.GRAY + " account!");
+        User user = DiscordUtil.getJda().getUserById(event.getUser().getId());
+        user.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage("Successfully linked with " + event.getPlayer().getName() + "!").queue());
+        Bukkit.broadcastMessage(DiscordSRV.config().getString("LinkingMessageLinkedInGame").replace("%player%",event.getPlayer().getName()));
 
         // Example of sending a message to a channel called "unlinks" (defined in the config.yml using the Channels option) when a user unlinks
         TextChannel textChannel = DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName("links");
 
         // null if the channel isn't specified in the config.yml
         if (textChannel != null) {
-            textChannel.sendMessage(event.getPlayer().getName() + " has linked their Discord account!").queue();
+            textChannel.sendMessage(DiscordSRV.config().getString("LinkingMessageLinkedInDiscord").replace("%player%",event.getPlayer().getName())).queue();
         } else {
             plugin.getLogger().warning("Channel called \"links\" could not be found in the DiscordSRV configuration");
         }
@@ -69,10 +69,9 @@ public class DiscordSRVListener {
 
         // will be null if the bot isn't in a Discord server with the user (eg. they left the main Discord server)
         if (user != null) {
-
             // opens/retrieves the private channel for the user & sends a message to it (if retrieving the private channel was successful)
-            //user.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage("Your account has been unlinked").queue());
-            Bukkit.broadcastMessage(ChatColor.GRAY + "[" + net.md_5.bungee.api.ChatColor.of("#DB5860") + "\u2718" + ChatColor.GRAY + "] " + net.md_5.bungee.api.ChatColor.of("#FF9B58") + event.getPlayer().getName() + ChatColor.GRAY + " has unlinked their" + net.md_5.bungee.api.ChatColor.of("#7289DA") + " Discord" + ChatColor.GRAY + " account.");
+            user.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage("Your account has been unlinked from " + event.getPlayer().getName() + ".").queue());
+            Bukkit.broadcastMessage(DiscordSRV.config().getString("LinkingMessageUnlinkedInGame").replace("%player%",event.getPlayer().getName()));
         }
 
         // Example of sending a message to a channel called "unlinks" (defined in the config.yml using the Channels option) when a user unlinks
@@ -80,7 +79,7 @@ public class DiscordSRVListener {
 
         // null if the channel isn't specified in the config.yml
         if (textChannel != null) {
-            textChannel.sendMessage(event.getPlayer().getName() + " has unlinked their Discord account.").queue();
+            textChannel.sendMessage(DiscordSRV.config().getString("LinkingMessageUnlinkedInDiscord").replace("%player%",event.getPlayer().getName())).queue();
         } else {
             plugin.getLogger().warning("Channel called \"unlinks\" could not be found in the DiscordSRV configuration");
         }
