@@ -1,4 +1,5 @@
 main: com.discordsrv.linkchannel.Plugin
-version: 1.0
+version: 1.7.0
 name: DiscordSRV-LinkChannel
 depend: [DiscordSRV]
+api-version: 1.16

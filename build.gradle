@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'github.scarsz.discordsrv'
-version = '1.1-SNAPSHOT'
+version = '1.7.0'
 
 description = "By Mike5357 - Allow link codes to be sent to a channel rather than only accepted via Bot DM"
 
@@ -24,7 +24,7 @@ repositories {
 }
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
-    compileOnly 'com.discordsrv:discordsrv:1.24.1-SNAPSHOT'
+    compileOnly 'com.discordsrv:discordsrv:1.27.0'
     compileOnly group: 'org.bukkit', name: 'bukkit', version:'1.15.2-R0.1-SNAPSHOT'
     compileOnly group: 'net.md-5', name: 'bungeecord-chat', version:'1.16-R0.1'
     compileOnly group: 'org.spigotmc', name: 'spigot-api', version:'1.16.1-R0.1-SNAPSHOT'
